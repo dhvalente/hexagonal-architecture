@@ -23,6 +23,7 @@ public class InsertCustomerUseCase {
         this.sendCpfForValidationOutputPort = sendCpfForValidationOutputPort;
     }
 
+
     public void insert(Customer customer, String zipCode) {
         var address = findAddressByZipCodeOutputPort.find(zipCode);
         customer.setAddress(address);
