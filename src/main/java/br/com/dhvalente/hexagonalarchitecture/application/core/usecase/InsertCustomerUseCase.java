@@ -1,6 +1,11 @@
-/*package br.com.dhvalente.hexagonalarchitecture.application.core.usecase;
+package br.com.dhvalente.hexagonalarchitecture.application.core.usecase;
 
-public class InsertCustomerUseCase implements InsertCustomerInputPort {
+import br.com.dhvalente.hexagonalarchitecture.application.core.domain.Customer;
+import br.com.dhvalente.hexagonalarchitecture.application.ports.out.FindAddressByZipCodeOutputPort;
+import br.com.dhvalente.hexagonalarchitecture.application.ports.out.InsertCustomerOutputPort;
+import br.com.dhvalente.hexagonalarchitecture.application.ports.out.SendCpfForValidationOutputPort;
+
+public class InsertCustomerUseCase {
 
     private final FindAddressByZipCodeOutputPort findAddressByZipCodeOutputPort;
 
@@ -18,7 +23,6 @@ public class InsertCustomerUseCase implements InsertCustomerInputPort {
         this.sendCpfForValidationOutputPort = sendCpfForValidationOutputPort;
     }
 
-    @Override
     public void insert(Customer customer, String zipCode) {
         var address = findAddressByZipCodeOutputPort.find(zipCode);
         customer.setAddress(address);
@@ -26,4 +30,4 @@ public class InsertCustomerUseCase implements InsertCustomerInputPort {
         sendCpfForValidationOutputPort.send(customer.getCpf());
     }
 
-}*/
+}
