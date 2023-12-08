@@ -6,7 +6,9 @@ import br.com.dhvalente.hexagonalarchitecture.application.ports.in.InsertCustome
 import br.com.dhvalente.hexagonalarchitecture.application.ports.out.FindAddressByZipCodeOutputPort;
 import br.com.dhvalente.hexagonalarchitecture.application.ports.out.InsertCustomerOutputPort;
 import br.com.dhvalente.hexagonalarchitecture.application.ports.out.SendCpfForValidationOutputPort;
+import org.springframework.stereotype.Service;
 
+@Service
 public class InsertCustomerUseCase implements InsertCustomerInputPort {
 
     private final FindAddressByZipCodeOutputPort findAddressByZipCodeOutputPort;

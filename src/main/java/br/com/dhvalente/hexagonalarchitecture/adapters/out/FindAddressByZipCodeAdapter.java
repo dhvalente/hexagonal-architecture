@@ -6,7 +6,6 @@ import br.com.dhvalente.hexagonalarchitecture.application.core.domain.Address;
 import br.com.dhvalente.hexagonalarchitecture.application.ports.out.FindAddressByZipCodeOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 @Component
 public class FindAddressByZipCodeAdapter implements FindAddressByZipCodeOutputPort {
 
