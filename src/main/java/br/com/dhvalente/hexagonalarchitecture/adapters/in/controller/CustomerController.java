@@ -3,6 +3,7 @@ package br.com.dhvalente.hexagonalarchitecture.adapters.in.controller;
 import br.com.dhvalente.hexagonalarchitecture.adapters.in.controller.mapper.CustomerMapper;
 import br.com.dhvalente.hexagonalarchitecture.adapters.in.controller.request.CustomerRequest;
 import br.com.dhvalente.hexagonalarchitecture.adapters.in.controller.response.CustomerResponse;
+import br.com.dhvalente.hexagonalarchitecture.application.ports.in.DeleteCustomerByIdInputPort;
 import br.com.dhvalente.hexagonalarchitecture.application.ports.in.FindCustomerByIdInputPort;
 import br.com.dhvalente.hexagonalarchitecture.application.ports.in.InsertCustomerInputPort;
 import br.com.dhvalente.hexagonalarchitecture.application.ports.in.UpdateCustomerInputPort;
@@ -20,10 +21,16 @@ public class CustomerController {
     private InsertCustomerInputPort insertCustomerInputPort;
 
     @Autowired
-    private CustomerMapper customerMapper;
-
-    private UpdateCustomerInputPort updateCustomerInputPort;
     private FindCustomerByIdInputPort findCustomerByIdInputPort;
+
+    @Autowired
+    private UpdateCustomerInputPort updateCustomerInputPort;
+
+    @Autowired
+    private DeleteCustomerByIdInputPort deleteCustomerByIdInputPort;
+
+    @Autowired
+    private CustomerMapper customerMapper;
 
     @PostMapping
     public ResponseEntity<Void> insert(@Valid @RequestBody CustomerRequest customerRequest) {
@@ -44,6 +51,12 @@ public class CustomerController {
         var customer = customerMapper.toCustomer(customerRequest);
         customer.setId(id);
         updateCustomerInputPort.update( customer, customerRequest.getZipCode());
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable final String id) {
+        deleteCustomerByIdInputPort.delete(id);
         return ResponseEntity.noContent().build();
     }
 }
