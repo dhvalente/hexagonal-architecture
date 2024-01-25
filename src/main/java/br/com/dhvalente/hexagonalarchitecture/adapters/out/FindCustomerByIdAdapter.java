@@ -3,14 +3,14 @@ package br.com.dhvalente.hexagonalarchitecture.adapters.out;
 import br.com.dhvalente.hexagonalarchitecture.adapters.out.repository.CustomerRepository;
 import br.com.dhvalente.hexagonalarchitecture.adapters.out.repository.mapper.CustomerEntityMapper;
 import br.com.dhvalente.hexagonalarchitecture.application.core.domain.Customer;
-import br.com.dhvalente.hexagonalarchitecture.application.ports.out.FindCustomerByIdOutpuPort;
+import br.com.dhvalente.hexagonalarchitecture.application.ports.out.FindCustomerByIdOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Component
-public class FindCustomerByIdAdapter implements FindCustomerByIdOutpuPort {
+public class FindCustomerByIdAdapter implements FindCustomerByIdOutputPort {
 
     @Autowired
     private CustomerRepository customerRepository;
